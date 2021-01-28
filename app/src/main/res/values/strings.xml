@@ -2,5 +2,6 @@
     <string name="app_name">OpenApi</string>
     <string name="main_name">SHARE PLACE</string>
     <string name="face_login">f │페이스북으로 계속하기</string>
-    <string name="facebook_app_id">1084024958688480</string> <string name="fb_login_protocol_scheme">fb1084024958688480</string>
+    <string name="facebook_app_id">1084024958688480</string>
+    <string name="fb_login_protocol_scheme">fb1084024958688480</string>
 </resources>

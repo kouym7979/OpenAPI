@@ -10,6 +10,8 @@ import android.os.Bundle
 import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.openapi.databinding.ActivityLoginBinding
@@ -28,16 +30,19 @@ class LoginActivity : AppCompatActivity() {
 
     private var callbackManager: CallbackManager? = null
     private lateinit var binding:ActivityLoginBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        //setContentView(R.layout.activity_login)
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
-
+        setContentView(binding.root)
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
 
+
         binding.faceLogin.setOnClickListener {
+            Log.d("확인", "로그인버튼 눌림" )
             callbackManager = CallbackManager.Factory.create()
             LoginManager.getInstance().logInWithReadPermissions(this,
                 Arrays.asList("public_profile","email"))
@@ -46,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
             object : FacebookCallback<LoginResult>{
                 override fun onSuccess(result: LoginResult?) {
                     //유저데이터를 여기서 가져올 수 있음
-                    //Log.d("MainActivity", "Facebook token: " + loginResult.accessToken.token)
+                    Log.d("확인", "성공 " )
                     var intent :Intent= Intent(applicationContext, MainActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                     startActivity(intent)
@@ -54,10 +59,11 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 override fun onCancel() {
-
+                    Log.d("확인", "캔슬 " )
                 }
 
                 override fun onError(error: FacebookException?) {
+                    Log.d("확인", "에러 " )
                    Toast.makeText(applicationContext,"로그인에 실패했습니다",Toast.LENGTH_SHORT).show()
                 }
 
