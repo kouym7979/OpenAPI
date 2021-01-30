@@ -10,51 +10,44 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/list_num"
+        android:id="@+id/title"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_margin="20sp"
-        tools:text="일련번호"/>
+        tools:text="title"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/s_date"
+        android:id="@+id/author"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/list_num"
+        app:layout_constraintTop_toBottomOf="@id/title"
         android:layout_marginLeft="20sp"
-        tools:text="시작날짜"/>
+        tools:text="작가"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/e_date"
+        android:id="@+id/publish"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/s_date"
+        app:layout_constraintTop_toBottomOf="@id/author"
         android:layout_marginLeft="20sp"
-        tools:text="종료날짜"/>
+        tools:text="출판사"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/content"
+        android:id="@+id/year"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/e_date"
+        app:layout_constraintTop_toBottomOf="@id/publish"
         android:layout_marginLeft="20sp"
-        tools:text="시작날짜"/>
+        tools:text="날짜"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/place_name"
+        android:id="@+id/isbn"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/content"
+        app:layout_constraintTop_toBottomOf="@id/year"
         android:layout_marginLeft="20sp"
-        tools:text="장소"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/fes_name"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/place_name"
-        android:layout_marginLeft="20sp"
-        tools:text="개최이름"/>
+        tools:text="isbn"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

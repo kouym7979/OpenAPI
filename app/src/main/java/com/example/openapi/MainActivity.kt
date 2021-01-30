@@ -10,8 +10,10 @@ import com.example.openapi.databinding.ActivityMainBinding
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonParser
 import okhttp3.*
+import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,8 +26,6 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-        val JSON: MediaType = MediaType.get("application/json; charset=utf-8")
-
         binding.mainList.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
         binding.mainList.setHasFixedSize(true)
         //binding.mainList.adapter = RecyclerViewAdapter(ResponseDTO(0,List(Place)))
@@ -34,12 +34,14 @@ class MainActivity : AppCompatActivity() {
 
 
     fun fetchJson(){
-        val url ="http://apis.data.go.kr/6300000/eventDataService/eventDataListJson?serviceKey=528dJYSZAL4MMDEHve563fHM6WAvppwdZfW1xc15tszh9OIoZE7HTpLIObCxY%2BrWUIRL0O9SQiMqKp6GG6vA9Q%3D%3D&numOfRows=10&pageNo=1"
+        //val url ="http://apis.data.go.kr/6300000/eventDataService/eventDataListJson?serviceKey=528dJYSZAL4MMDEHve563fHM6WAvppwdZfW1xc15tszh9OIoZE7HTpLIObCxY%2BrWUIRL0O9SQiMqKp6GG6vA9Q%3D%3D&numOfRows=10&pageNo=1"
+        //val url ="http://data.seoul.go.kr/dataList/datasetView.do?infId=OA-149&srvType=A&serviceKind=1&currentPageNo=1"
+        val key ="756f7243706b6f7538305269594e44"
+        val url="http://openapi.seoul.go.kr:8088/"+key+"/json/SeoulLibraryBookRentNumInfo/1/15/"
         val request = Request.Builder().url(url).build()
 
         val client = OkHttpClient()
         client.newCall(request).enqueue(object : Callback{
-
             override fun onResponse(call: Call, response: Response) {
                 val body = response?.body()?.string()
                 println(body)
@@ -49,12 +51,18 @@ class MainActivity : AppCompatActivity() {
                 val parser = JsonParser()
 
                 val rootObj = parser.parse(body.toString())
-                    .asJsonObject.get("msgBody")
-                val attractions = gson.fromJson(rootObj,ResponseDTO::class.java)
+                    .asJsonObject.get("SeoulLibraryBookRentNumInfo")
 
+                val books = gson.fromJson(rootObj,ResponseDTO::class.java)
+
+
+                //Log.d("확인","데이터확인:"+attractions.msgBody[0].title.toString())
+                //Log.d("확인","데이터 확인:"+attractions.totalCount)
+                Log.d("확인",books.row[0].TITLE)
+                Log.d("확인",books.row[1].TITLE)
 
                 runOnUiThread {
-                    binding.mainList.adapter = RecyclerViewAdapter(attractions)
+                    binding.mainList.adapter = RecyclerViewAdapter(books)
                 }
 
             }
@@ -63,13 +71,12 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
-    data class ResponseDTO(val list_count: Int, val row: List<Place>)
-    data class Place(
-        var eventSeq: String? = "테스트",//행사 일련번호
-        var contents: String? = null,// 행사 상세정보
-        var placeCdNm: String? = null, //장소명
-        var beginDt: String? = null, //시작일
-        var endDt: String? = null, //종료일
-        var imageLink: String? = null //이미지 링크
-    )
+    data class ResponseDTO(val list_total_count:Int, val row: List<Book>)
+    data class Book(
+        val TITLE: String,
+        val AUTHOR : String,
+        val PUBLISHER : String,
+        val PUBLISHER_YEAR : Int,
+        val ISBN : Long
+        )
 }
