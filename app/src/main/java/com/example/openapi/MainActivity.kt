@@ -23,20 +23,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_main)
-
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.mainList.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
         binding.mainList.setHasFixedSize(true)
 
-
-
-        //binding.mainList.adapter = RecyclerViewAdapter(ResponseDTO(0,List(Place)))
-
-        /*main?.layoutManager =LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
-        main_list.setHasFixedSize(true)*/
         fetchJson()
     }
 
@@ -63,9 +55,6 @@ class MainActivity : AppCompatActivity() {
 
                 val books = gson.fromJson(rootObj,ResponseDTO::class.java)
 
-
-                //Log.d("확인","데이터확인:"+attractions.msgBody[0].title.toString())
-                //Log.d("확인","데이터 확인:"+attractions.totalCount)
                 Log.d("확인",books.row[0].TITLE)
                 Log.d("확인",books.row[1].TITLE)
 
