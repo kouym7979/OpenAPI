@@ -4,4 +4,9 @@
     <string name="face_login">f │페이스북으로 계속하기</string>
     <string name="facebook_app_id">1084024958688480</string>
     <string name="fb_login_protocol_scheme">fb1084024958688480</string>
+    <string name="list_item_title">제목: </string>
+    <string name="list_item_author">작가: </string>
+    <string name="list_item_publish">출판사: </string>
+    <string name="list_item_year">출판년도 :</string>
+    <string name="list_item_isbn">일련변호: </string>
 </resources>

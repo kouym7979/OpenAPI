@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "499070172922",
+    "project_id": "openapi-63452",
+    "storage_bucket": "openapi-63452.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:499070172922:android:8eab2ae612eddb811fd343",
+        "android_client_info": {
+          "package_name": "com.example.openapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "499070172922-63i3sps7cq5sh7mfqanbcdot4id26vlu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfqLafrLV3PHOjYLdG4kyyRa1bNqSbUgk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "499070172922-63i3sps7cq5sh7mfqanbcdot4id26vlu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

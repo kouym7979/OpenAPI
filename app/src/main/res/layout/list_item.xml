@@ -1,53 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_book"
+        android:layout_marginLeft="15sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/grid_view"/>
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/title"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10sp"
+        app:layout_constraintLeft_toRightOf="@id/grid_view"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="20sp"
+        android:id="@+id/grid1"
+        android:textSize="12sp"
+        android:layout_marginLeft="10sp"
+        android:text="@string/list_item_title"/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:textSize="12sp"
+        android:ellipsize="end"
+        app:layout_constraintWidth_percent="0.55"
+        android:maxLines="1"
+        android:layout_marginLeft="10sp"
+        android:layout_marginTop="10sp"
+        app:layout_constraintLeft_toRightOf="@id/grid1"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="title"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/grid_view"
+        app:layout_constraintTop_toBottomOf="@id/grid1"
+        android:id="@+id/grid2"
+        android:textSize="10sp"
+        android:layout_marginLeft="10sp"
+        android:layout_marginTop="2sp"
+        android:text="@string/list_item_author"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/author"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="2sp"
+        android:textSize="10sp"
+        android:layout_marginLeft="10sp"
+        app:layout_constraintLeft_toRightOf="@id/grid2"
         app:layout_constraintTop_toBottomOf="@id/title"
-        android:layout_marginLeft="20sp"
         tools:text="작가"/>
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/grid_view"
+        app:layout_constraintTop_toBottomOf="@id/grid2"
+        android:id="@+id/grid3"
+        android:textSize="10sp"
+        android:layout_marginTop="2sp"
+        android:layout_marginLeft="10sp"
+        android:text="@string/list_item_publish"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2sp"
         android:id="@+id/publish"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="10sp"
+        android:layout_marginLeft="10sp"
+        app:layout_constraintLeft_toRightOf="@id/grid3"
         app:layout_constraintTop_toBottomOf="@id/author"
-        android:layout_marginLeft="20sp"
         tools:text="출판사"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:layout_marginLeft="10sp"
+        app:layout_constraintLeft_toRightOf="@id/grid_view"
+        app:layout_constraintTop_toBottomOf="@id/grid3"
+        android:id="@+id/grid4"
+        android:layout_marginTop="2sp"
+        android:text="@string/list_item_year"/>
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/year"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="2sp"
+        android:textSize="10sp"
+        android:layout_marginLeft="10sp"
+        app:layout_constraintLeft_toRightOf="@id/grid4"
         app:layout_constraintTop_toBottomOf="@id/publish"
-        android:layout_marginLeft="20sp"
         tools:text="날짜"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/grid_view"
+        app:layout_constraintTop_toBottomOf="@id/grid4"
+        android:id="@+id/grid5"
+        android:layout_marginTop="2sp"
+        android:textSize="10sp"
+        android:layout_marginLeft="10sp"
+        android:text="@string/list_item_isbn"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/isbn"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="10sp"
+        android:layout_marginLeft="10sp"
+        android:layout_marginTop="2sp"
+        app:layout_constraintLeft_toRightOf="@id/grid5"
         app:layout_constraintTop_toBottomOf="@id/year"
-        android:layout_marginLeft="20sp"
         tools:text="isbn"/>
 
+    <ImageView
+        android:id="@+id/comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/comment_num"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/comment_num"
+         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/comment_num"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginRight="10sp"
+        android:text="0"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
