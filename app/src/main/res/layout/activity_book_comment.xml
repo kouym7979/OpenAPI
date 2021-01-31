@@ -163,12 +163,13 @@
                     android:layout_weight="0.8"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10sp"
+                    android:imeOptions="actionDone"
                     android:background="@drawable/edit_background"
                     android:hint="@string/edit_hint"
                     android:maxLength="17"
                     android:maxLines="3"
                     android:layout_marginLeft="5sp"
-                    android:padding="10dp"/>
+                    android:padding="10sp"/>
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
