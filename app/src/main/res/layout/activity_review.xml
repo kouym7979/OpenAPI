@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReviewActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/review_main">
+
+        <TextView
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.5"
+            android:layout_height="wrap_content"
+            android:id="@+id/review_name"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:text="닉네임"
+            android:layout_margin="15sp"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/review_name2"
+            app:layout_constraintTop_toBottomOf="@id/review_name"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="@string/review_text"
+           android:layout_marginLeft="15sp"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:src="@drawable/personex"
+            android:id="@+id/img"
+            android:layout_margin="15sp"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            app:layout_constraintTop_toBottomOf="@id/img"
+            android:layout_margin="20sp"
+            android:background="@drawable/edit_background"
+            android:hint="@string/review"
+            android:padding="10sp"
+
+            android:id="@+id/edit_review"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_margin="20sp"
+            android:text="@string/review_btn"
+            app:layout_constraintTop_toBottomOf="@id/edit_review"
+            android:background="@color/emplobackground"
+            android:textColor="#fff"
+            android:id="@+id/review_btn"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/review_recycler"
+            app:layout_constraintTop_toBottomOf="@id/review_btn"
+            android:background="@drawable/item_background"
+            android:layout_marginTop="20sp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

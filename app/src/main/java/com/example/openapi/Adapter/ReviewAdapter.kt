@@ -19,7 +19,7 @@ import com.example.openapi.databinding.ActivityMainBinding.inflate
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.review_item.view.*
 
-class ReviewAdapter ( val context:Context,val review : List<BookInfo>,val email:String): RecyclerView.Adapter<ReviewAdapter.ViewHolder>(){
+class ReviewAdapter ( val context:Context,val review : List<BookInfo>,val email:String,val check:Int): RecyclerView.Adapter<ReviewAdapter.ViewHolder>(){
 
     private var mcontext:Context?=null
     private var mfirestore :FirebaseFirestore?=null
@@ -36,34 +36,38 @@ class ReviewAdapter ( val context:Context,val review : List<BookInfo>,val email:
 
         if(email.equals(review!![position].user_email))
         {
-            holder.itemView.review_menu.visibility=View.VISIBLE
-        }
+            holder.itemView.review_menu.setOnClickListener {
+                var builder = AlertDialog.Builder(context)
+                builder.setTitle("삭제하시겠습니까?")
 
-        else
-            holder.itemView.review_menu.visibility=View.GONE
+                var delete=DialogInterface.OnClickListener { dialog, which ->
+                    mfirestore?.collection("review")?.document(review!![position].review_id!!)
+                        ?.delete()?.addOnSuccessListener {
+                            Log.d("확인","작성한 리뷰가 삭제되었습니다")
+                            Toast.makeText(context,"작성한 리뷰가 삭제되었습니다",Toast.LENGTH_SHORT).show()
+                        }
+                }
+                builder.setPositiveButton("확인",delete)
+                builder.setNegativeButton("취소",null)
+                builder.show()
 
-        holder.itemView.review_menu.setOnClickListener {
-            var builder = AlertDialog.Builder(context)
-            builder.setTitle("삭제하시겠습니까?")
-
-            var delete=DialogInterface.OnClickListener { dialog, which ->
-                mfirestore?.collection("review")?.document(review!![position].review_id!!)
-                    ?.delete()?.addOnSuccessListener {
-                        Log.d("확인","작성한 리뷰가 삭제되었습니다")
-                        Toast.makeText(context,"작성한 리뷰가 삭제되었습니다",Toast.LENGTH_SHORT).show()
-                    }
             }
-            builder.setPositiveButton("확인",delete)
-            builder.setNegativeButton("취소",null)
-            builder.show()
-
         }
+        else {
+           Toast.makeText(context,"작성자가 아닙니다",Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     override fun getItemCount(): Int {
 
-        if(review.size>5) {
-            return 5
+        if(check==1){
+            return review.size
+        }
+        else{
+            if(review.size>5)
+                return 5
+            else return review.size
         }
         return review.size
     }

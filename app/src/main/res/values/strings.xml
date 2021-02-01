@@ -11,4 +11,8 @@
     <string name="list_item_isbn">일련변호: </string>
     <string name="comment_review">한 줄 리뷰</string>
     <string name="edit_hint">한 줄 리뷰를 남겨주세요</string>
+    <string name="review">한 줄 리뷰를 남겨주세요</string>
+    <string name="review_btn">리뷰 등록하기</string>
+    <string name="review_text">한 줄 리뷰를 작성해보세요</string>
+    <string name="main_edit">책 제목을 검색해주세요</string>
 </resources>

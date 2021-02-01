@@ -44,8 +44,8 @@
             android:id="@+id/comment_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
             android:gravity="center"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -56,8 +56,8 @@
             android:id="@+id/comment_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
             android:layout_marginTop="5sp"
+            android:textSize="15sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/comment_title"
@@ -65,10 +65,10 @@
 
 
         <LinearLayout
-            android:layout_marginTop="5sp"
             android:id="@+id/comment_lay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
             android:background="@drawable/item_background"
             android:orientation="horizontal"
             android:padding="5sp"
@@ -139,13 +139,35 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/comment_lay">
 
-            <TextView
-                android:id="@+id/line_review"
-                android:layout_marginTop="5sp"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/sub_con"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15sp"
-                android:text="@string/comment_review" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/line_review"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15sp"
+                    android:layout_marginTop="5sp"
+                    android:text="@string/comment_review"
+                    android:textSize="20sp"
+                    app:layout_constraintLeft_toLeftOf="@id/sub_con"
+                    app:layout_constraintTop_toTopOf="@id/sub_con" />
+
+                <ImageButton
+                    android:id="@+id/more_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40sp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+                    app:layout_constraintTop_toTopOf="@id/sub_con"
+                    app:layout_constraintRight_toRightOf="@id/sub_con"
+                    android:layout_marginRight="15sp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/comment_recycler"
@@ -160,28 +182,30 @@
                 <EditText
                     android:id="@+id/comment_edit"
                     android:layout_width="0dp"
-                    android:layout_weight="0.8"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5sp"
                     android:layout_marginTop="10sp"
-                    android:imeOptions="actionDone"
+                    android:layout_weight="0.8"
                     android:background="@drawable/edit_background"
                     android:hint="@string/edit_hint"
+                    android:imeOptions="actionDone"
                     android:maxLength="17"
                     android:maxLines="3"
-                    android:layout_marginLeft="5sp"
-                    android:padding="10sp"/>
+                    android:padding="10sp" />
+
                 <Button
+                    android:id="@+id/edit_btn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
                     android:layout_marginTop="10sp"
-                    android:text="등록"
                     android:layout_marginRight="5sp"
-                    android:textColor="#fff"
+                    android:layout_weight="0.2"
                     android:background="@drawable/btn_background"
-                    android:id="@+id/edit_btn"/>
+                    android:text="등록"
+                    android:textColor="#fff" />
             </LinearLayout>
         </LinearLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
