@@ -15,8 +15,6 @@ import kotlinx.android.synthetic.main.list_item.view.*
 
 class RecyclerViewAdapter(val bookList : MainActivity.ResponseDTO):RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
-
-
     lateinit var listener: AdapterView.OnItemClickListener
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item,parent,false)
@@ -42,6 +40,7 @@ class RecyclerViewAdapter(val bookList : MainActivity.ResponseDTO):RecyclerView.
 
     }
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
+
 
         fun bindItems(data : MainActivity.Book){
             itemView.title.text=data.TITLE
